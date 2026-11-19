@@ -2,6 +2,7 @@
 
 CyberNode S3 is a custom ESP32-S3 smartwatch firmware featuring a compact OLED interface, BLE connectivity to a companion Android app, interactive watch faces, navigation, notifications, call controls, games, and local productivity tools.
 
+---
 
 ## Features
 
@@ -71,7 +72,7 @@ The firmware targets an **ESP32-S3 Mini / ESP32-S3 Super Mini** board and a 128�
 | SELECT button | GPIO 5 |
 | BACK button | GPIO 6 |
 | Buzzer | GPIO 7 |
-| Haptic motor control | GPIO 10 (external driver required) |
+| Haptic motor control | GPIO 10|
 | Phone connection | Bluetooth Low Energy (BLE) |
 
 Check your specific ESP32-S3 board pinout and wiring before connecting hardware. GPIO availability and board variants can differ.
@@ -79,6 +80,7 @@ Check your specific ESP32-S3 board pinout and wiring before connecting hardware.
 The firmware's battery percentage field is currently a placeholder unless a compatible battery-monitoring source is integrated.
 
 ---
+
 ## Getting started
 
 ### 1. Install Arduino IDE
@@ -100,10 +102,10 @@ Connect the ESP32-S3 over USB, select the correct port, choose the board configu
 Wire the display, buttons, buzzer, and haptic-driver control according to the pin table above. Use an appropriate external driver for the vibration motor; do not drive a motor directly from an ESP32 GPIO.
 
 ---
+
 ## BLE connection with the companion Android app
 
 The watch advertises over Bluetooth Low Energy as:
-
 
 **CyberNode S3**
 
@@ -128,6 +130,7 @@ For manual BLE inspection, a BLE utility such as nRF Connect can scan for `Cyber
 > The UUIDs and BLE roles above are defined by the firmware. The companion app must use the compatible data protocol and message formats; connecting at the BLE level alone does not guarantee app features will work.
 
 ---
+
 ## Controls
 
 The watch uses three buttons:
@@ -141,6 +144,7 @@ The watch uses three buttons:
 A long SELECT press is also supported in the input system. Button actions may vary by screen/context.
 
 ---
+
 ## Project files
 
 The firmware's main sketch is `CyberNode_S3.ino`. Its supporting implementation files are kept alongside the sketch and in the `Games/` subdirectory.
@@ -160,38 +164,10 @@ Key source modules include:
 - `Games/` — game manager and individual games.
 
 ---
-## Troubleshooting
 
-**Watch does not appear in BLE scanning**
-- Restart the watch and scan again.
-- Confirm the watch is advertising as `CyberNode S3`.
-- Disconnect any previously connected device if needed and retry.
 
-**Display is blank or corrupted**
-- Verify OLED power, ground, SDA (GPIO 8), and SCL (GPIO 9).
-- Confirm the display is SH1106-compatible and 128×64.
-- Check the selected board and I²C wiring.
-
-**Upload fails**
-- Verify the selected ESP32-S3 board and port.
-- Try the board's bootloader procedure and reconnect USB.
-- Confirm the USB cable supports data.
-
-**Phone connects but watch data/features do not update**
-- BLE connection does not by itself establish protocol compatibility.
-- Confirm the companion app is using the expected service/characteristic UUIDs and message formats.
-- Check Serial Monitor for BLE receive/parse diagnostics.
-
-**Buzzer or vibration does not work**
-- Verify GPIO wiring and component polarity.
-- Ensure the haptic motor has an appropriate external driver and power source.
-- Check the sound and haptic settings on the watch.
-
----
 ## Notes
 
 - CyberNode S3 is a firmware project intended for compatible ESP32-S3 hardware and its configured peripherals.
 - Features requiring phone data or a BLE companion connection will not work fully when disconnected.
 - Board revisions and wiring variations may require changes to pin configuration.
-#   C y b e r N o d e - S 3 - F i r m w a r e  
- 
