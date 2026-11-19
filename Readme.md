@@ -1,6 +1,6 @@
 # CyberNode S3
 
-CyberNode S3 is a custom ESP32-S3 smartwatch firmware featuring a compact OLED interface, BLE connectivity to a companion Android app, interactive watch faces, navigation, notifications, call controls, games, and local productivity tools.
+CyberNode S3 is a custom ESP32-S3 smartwatch firmware featuring a compact OLED interface, BLE connectivity to a companion Android app, interactive watch faces, navigation, notifications, call controls, games, and local productivity tools. 
 
 ---
 
